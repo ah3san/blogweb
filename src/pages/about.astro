@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+  { category: 'AI & Automation', items: ['AI Integrations', 'Prompt Engineering', 'LangChain', 'Local LLMs (Ollama)', 'Python Automation Scripts'] },
+  { category: 'App Development', items: ['Flutter', 'Dart', 'State Management', 'Mobile Apps (iOS & Android)', 'Desktop Utilities'] },
+  { category: 'Web & Systems', items: ['Astro', 'HTML/CSS/JS', 'Node.js / Express', 'Tailwind CSS', 'PostgreSQL', 'Windows Diagnostics'] },
+  { category: 'Languages & Tools', items: ['Python', 'Dart', 'TypeScript', 'Bash', 'Git & GitHub Actions', 'Command-Line Tools'] }
+];
+
+const certifications = [
+  { name: 'Certified Flutter Developer', organization: 'Google Developer Group / Mobile Alliance', date: '2025', id: 'FL-209-1093' },
+  { name: 'Advanced Python Specialist', organization: 'Python Institute', date: '2026', id: 'PY-938-1249' },
+  { name: 'AI Solutions Architect', organization: 'AI Practitioners Guild', date: '2025', id: 'AI-SA-8204' },
+  { name: 'Windows Systems Administrator (Credential)', organization: 'Microsoft Services', date: '2024', id: 'MS-SYS-9381' }
+];
+
+const experience = [
+  {
+    role: 'Lead Solutions Developer & Founder',
+    company: 'Novexa Platforms',
+    period: '2024 - Present',
+    description: 'Building custom web platforms and systems utilities. Integrating generative AI models to automate workflow pipelines, and creating low-latency user interfaces.'
+  },
+  {
+    role: 'Full-Stack Developer (Web & Mobile)',
+    company: 'Independent Contractor',
+    period: '2022 - 2024',
+    description: 'Developed cross-platform mobile apps using Flutter and Dart. Designed responsive web applications using modern frameworks, and deployed background services connected to local AI nodes.'
+  },
+  {
+    role: 'Python Scripting & Systems Engineer',
+    company: 'Habib Tech Solutions',
+    period: '2020 - 2022',
+    description: 'Built diagnostic tools, automatic file repair systems, and network scanning scripts in Python. Resolved registry and system bottlenecks for Windows clients, optimizing desktop performance.'
+  }
+];
+---
+
+<Layout
+  title="About Ahsan Habib | Novexa.tech"
+  description="Biography, professional software development experience, Flutter app architecture, Python scripting, and AI solution systems of Ahsan Habib."
+>
+  <div class="py-12 bg-slate-50/50 dark:bg-[#070a13] border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+        About Me
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed font-light">
+        A look into my professional background, software design skills, and specialized tools.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    
+    <!-- Profile & Bio Section -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+      <!-- Profile Picture / Placeholder Graphic -->
+      <div class="md:col-span-4 max-w-xs mx-auto md:max-w-none w-full">
+        <div class="aspect-square rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-500 to-indigo-600 p-1.5 shadow-lg shadow-cyan-500/10">
+          <div class="w-full h-full rounded-xl bg-slate-950 flex flex-col items-center justify-center text-center p-6 border border-white/10 text-white space-y-2">
+            <span class="text-6xl font-extrabold tracking-wider bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">AH</span>
+            <h3 class="font-extrabold text-xl">Ahsan Habib</h3>
+            <p class="text-xs text-slate-400 tracking-widest uppercase">AI & Software Developer</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio text -->
+      <div class="md:col-span-8 space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Biography</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          I am a developer and creator specializing in **building custom websites, cross-platform Flutter applications, Python automation tools, and custom AI systems**. I leverage artificial intelligence to design and ship advanced products quickly.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          Whether it is writing high-performance Python scripts to audit Windows logs, building beautiful user interfaces in Flutter, or deploying secure websites, I build systems that solve real-world problems. Through **Novexa.tech**, I publish guides on systems troubleshooting, programming practices, and AI experiments.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tech Stack / Skills Section -->
+    <div class="space-y-6 pt-8 border-t border-slate-200/50 dark:border-slate-800/50">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Technical Skillset</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {skills.map((s) => (
+          <div class="p-6 bg-white dark:bg-[#0c101e] border border-slate-200/60 dark:border-slate-800/60 rounded-2xl shadow-sm">
+            <h3 class="font-bold text-slate-800 dark:text-slate-200 border-b border-slate-100 dark:border-slate-800/50 pb-2 mb-4 text-sm uppercase tracking-wider">
+              {s.category}
+            </h3>
+            <ul class="space-y-2 flex flex-wrap gap-1.5 sm:block">
+              {s.items.map((item) => (
+                <li class="text-xs px-2.5 py-1 sm:px-0 sm:py-0 rounded sm:rounded-none bg-slate-100 dark:bg-slate-800/50 sm:bg-transparent sm:dark:bg-transparent text-slate-600 dark:text-slate-400 font-medium sm:list-disc sm:list-inside">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div class="space-y-6 pt-8 border-t border-slate-200/50 dark:border-slate-800/50">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Credentials & Specialties</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {certifications.map((c) => (
+          <div class="p-6 bg-white dark:bg-[#0c101e] border border-slate-200/60 dark:border-slate-800/60 rounded-2xl flex justify-between items-center group hover:border-cyan-500/20 transition-all">
+            <div class="space-y-1">
+              <h3 class="font-extrabold text-lg text-slate-900 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                {c.name}
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">{c.organization}</p>
+              <p class="text-[10px] text-slate-400 dark:text-slate-500">ID: {c.id}</p>
+            </div>
+            <span class="text-xs font-bold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+              {c.date}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Experience Timeline Section -->
+    <div class="space-y-8 pt-8 border-t border-slate-200/50 dark:border-slate-800/50">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Professional Experience</h2>
+      <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 space-y-8">
+        {experience.map((e) => (
+          <div class="relative pl-8 group">
+            <!-- Timeline dot -->
+            <div class="absolute -left-2 top-1.5 w-4.5 h-4.5 rounded-full bg-white dark:bg-[#070a13] border-2 border-slate-300 dark:border-slate-700 group-hover:border-cyan-500 transition-colors"></div>
+            
+            <div class="space-y-2">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white">
+                  {e.role} <span class="text-cyan-500 font-medium">@ {e.company}</span>
+                </h3>
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-bold px-2 py-1 bg-slate-100 dark:bg-slate-900 rounded-lg self-start">
+                  {e.period}
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                {e.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</Layout>

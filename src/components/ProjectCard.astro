@@ -1,0 +1,80 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { name, description, tech, github, demo, category } = project;
+
+const categoryColors: Record<string, string> = {
+  Cybersecurity: 'border-red-500/30 text-red-500 bg-red-500/5',
+  AI: 'border-purple-500/30 text-purple-500 bg-purple-500/5',
+  Programming: 'border-blue-500/30 text-blue-500 bg-blue-500/5',
+  Tools: 'border-emerald-500/30 text-emerald-500 bg-emerald-500/5',
+};
+
+const categoryColor = categoryColors[category] || 'border-slate-500/30 text-slate-500 bg-slate-500/5';
+---
+
+<div class="flex flex-col bg-white dark:bg-[#0c101e] border border-slate-200/60 dark:border-slate-800/60 rounded-2xl p-6 shadow-sm hover:shadow-md dark:hover:border-cyan-500/30 transition-all duration-300 relative group">
+  
+  <!-- Category Badge & Glow -->
+  <div class="flex justify-between items-start mb-4">
+    <span class={`text-[10px] px-2.5 py-0.5 rounded-full border font-bold uppercase tracking-wider ${categoryColor}`}>
+      {category}
+    </span>
+    
+    <!-- Links -->
+    <div class="flex items-center gap-3 z-20">
+      <a
+        href={github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
+        title="View source on GitHub"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </svg>
+      </a>
+
+      {demo && (
+        <a
+          href={demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
+          title="View Live Demo"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </div>
+
+  <!-- Project Name -->
+  <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+    {name}
+  </h3>
+
+  <!-- Description -->
+  <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+    {description}
+  </p>
+
+  <!-- Tech tags -->
+  <div class="flex flex-wrap gap-1.5 mt-auto">
+    {tech.map((item) => (
+      <span class="text-xs px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 font-medium">
+        {item}
+      </span>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,70 @@
+---
+// Newsletter CTA
+---
+
+<section class="relative rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50 bg-gradient-to-br from-slate-900 via-[#0d1222] to-slate-950 p-8 sm:p-12 text-center shadow-xl">
+  <!-- Decorative background circles -->
+  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-indigo-500/10 blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-2xl mx-auto space-y-6 relative z-10">
+    <div class="inline-flex p-3 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l8-5.333a2 2 0 012.22 0l8 5.333A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-2.25-1.5a2 2 0 00-2.22 0l-2.25 1.5" />
+      </svg>
+    </div>
+    
+    <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+      Join the Technical Newsletter
+    </h2>
+    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+      Subscribe to receive deep dives into reverse engineering, local AI experiments, and vulnerability analysis. Zero spam. Safe unsubscribes.
+    </p>
+
+    <!-- Subscription Form -->
+    <form id="newsletter-form" class="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <input
+        type="email"
+        id="newsletter-email"
+        required
+        placeholder="Enter your email address..."
+        class="flex-grow px-4 py-3 bg-slate-950/60 border border-slate-800 text-white placeholder-slate-500 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors text-sm"
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold rounded-xl text-sm transition-all duration-300 transform active:scale-95 whitespace-nowrap cursor-pointer"
+      >
+        Subscribe
+      </button>
+    </form>
+
+    <!-- Status Message -->
+    <div id="newsletter-status" class="hidden text-sm mt-3 transition-opacity duration-300"></div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
+  const statusDiv = document.getElementById('newsletter-status') as HTMLDivElement;
+
+  if (form && emailInput && statusDiv) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      // Simulate API call success
+      statusDiv.classList.remove('hidden', 'text-red-400', 'text-emerald-400');
+      statusDiv.classList.add('text-cyan-400');
+      statusDiv.textContent = "Registering subscription...";
+
+      setTimeout(() => {
+        statusDiv.classList.remove('text-cyan-400');
+        statusDiv.classList.add('text-emerald-400');
+        statusDiv.textContent = `Success! Check your inbox to confirm your subscription.`;
+        form.reset();
+      }, 1200);
+    });
+  }
+</script>
